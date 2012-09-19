@@ -2,9 +2,7 @@
 <Lab xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/ContentFramework.Core.Models">
   <Id>BuildingWindows8AppsWithWindowsAzureMobileServices</Id>
   <Technologies>
-    <Technology>Windows Azure Mobile Services</Technology>	
-	<Technology>Windows Store apps</Technology>
-	<Technology>Live SDK</Technology>
+    <Technology>Windows Azure Mobile Services</Technology>
   </Technologies>
   <Author>
 	<Blog>
