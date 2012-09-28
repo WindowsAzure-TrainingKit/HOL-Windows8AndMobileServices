@@ -18,6 +18,7 @@
   <Title>Building Windows Store Apps using Windows Azure Mobile Services</Title>
   <Version>1.0.0</Version>
   <CustomProperties>
+    	<Property Name="ContentType" Value="VS2012" />
 	<Property Name="GitHubRepository" Value="https://github.com/WindowsAzure-TrainingKit/HOL-Windows8AndMobileServices" />
   </CustomProperties>   
 </Lab> 
