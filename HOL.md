@@ -186,6 +186,8 @@ In demo, you add push notifications, using the Windows Push Notification service
 <a name="Register-your-app-for-push-notifications-and-configure-Mobile-Services" />
 ### Task 1 - Register your app for push notifications and configure Mobile Services ###
 
+> **Note:** If you have a subscription for the Windows Store to obtain the WNS credentials, follow next steps, otherwise execute the [Appendix A: Requesting WNS credentials from the Windows Push Notifications & Live Connect Portal] (#AppendixA).
+
 1.	Click **Store** in the Visual Studio menu and select **Reserve App Name**.
 
 	![Reserving App Name](./Images/reserving-app-name.png?raw=true)
@@ -231,6 +233,8 @@ In demo, you add push notifications, using the Windows Push Notification service
 1. Click the **Push** tab, enter the **Client secret** and **Package SID** values obtained for WNS above, and click **Save**.
 
 	![Image 14](Images/image-14.png?raw=true)
+
+	> **Note:** In the following steps you will associate your application with the Windows Store. If you obtained your WNS credentials from the Windows Push Notifications & Live Connect Portal, there is no need to execute these steps.
 
 1.	Click **Store** in the Visual Studio menu and select **Associate App with the Store**.
 
@@ -513,3 +517,48 @@ Next, you will update the app to authenticate users with Live Connect before req
 When you are successfully logged-in, the app should run without errors, and you should be able to query Mobile Services and make updates to data.
 
 ---
+
+<a name="AppendixA"></a>
+## Appendix A: Requesting WNS credentials from the Windows Push Notifications & Live Connect Portal ##
+
+Follow these steps in order to obtain your free WNS credentials from the Microsoft Dev Portal.
+
+To request **WNS** credentials you will require your publisher credentials for your Windows 8 Style UI app. 
+
+1. In a new instance of **Visual Studio Express 2012 for Windows 8**, open your existing Windows 8 Style UI application or create a new application.
+
+1.  In solution explorer open your **Package.appxmanifest** and select the **packaging** tab.  We will use the **Package Display Name** and **Publisher** fields for creating your **WNS** Credentials.
+
+	![Opening Package.appxmanifest](./Images/opening-packageappxmanifest2.png?raw=true)
+	
+	_Opening Package.appxmanifest_
+
+1. Navigate to the **Windows Push Notifications & Live Connect** portal (http://manage.dev.live.com/build).
+
+	![Login to request WNS credentials](./Images/login-to-request-wns-credentials.png?raw=true)
+
+	_Login to request WNS credentials_
+
+1.  Sign in using your **Microsoft Account**.
+
+1.  Follow the **Step 1** and **Step 2** provided in the portal to supply your Package Name and Certificate Name (CN) and click **I accept**.
+
+	![Requesting WNS Credentials](./Images/requesting-wns-credentials.png?raw=true)
+
+	_Requesting WNS Credentials_
+
+	> **Note:**  Make sure you have copied the publisher to the portal correctly, otherwise, you will get a 403 unauthorized error when trying to send notifications.
+
+1. Finally in the **Step 3** you obtained your WNS credentials, which are a **Package Name** that you will insert in the application manifest file of you Windows 8 Style UI App, and a **Client Secret** and a **Package SID** identifier that you will use later in this lab.
+
+	![Credentials supplied for Auth against WNS](./Images/credentials-supplied-for-auth-against-wns.png?raw=true)
+
+	_Credentials supplied for Auth against WNS_
+
+1.  Select the **Packaging** tab of the **package.appmanifest** of you Windows Style UI App.
+
+1.  Update the **Package Name** to the Package name created during the prior task in the [Windows Push Notifications & Live Connect Portal] (https://manage.dev.live.com/build) as depicted in the following figure. 
+
+	![Configuring your package.appmanifest package name](./Images/configuring-your-packageappmanifest-package-n.png?raw=true)
+
+	_Configuring your package.appmanifest package name_
