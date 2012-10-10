@@ -15,6 +15,7 @@
   <Document ConversionType="Html">.\HOL.md</Document>
   <Title>Building Windows Store Apps using Windows Azure Mobile Services</Title>
   <Version>1.0.1</Version>
+  <DependencyChecker>.\Source\Setup\Dependencies.depi</DependencyChecker>
   <CustomProperties>
     <Property Name="ContentType" Value="VS2012" />
     <Property Name="GitHubRepository" Value="https://github.com/WindowsAzure-TrainingKit/HOL-Windows8AndMobileServices" />
