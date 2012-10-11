@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <DependencyCheckerConfiguration version="2.0">
-	<title>Building Windows Store Apps using Windows Azure Mobile Services</title>
+	<title>Introduction to Building Windows Store Apps with Windows Azure Mobile Services</title>
 	<dependencies>
 		<dependency hint="HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\DevDiv\win8express\Servicing\11~.0\coremsi.Version,HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\DevDiv\vs\Servicing\11~.0\devenv.Version;^11\.[0-9]\.([3-9][0-9]\d*).[0-9]$"
             name="Visual Studio Express 2012 for Windows 8 Or Visual Studio 2012"
