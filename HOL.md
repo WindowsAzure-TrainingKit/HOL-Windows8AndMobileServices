@@ -518,6 +518,18 @@ When you are successfully logged-in, the app should run without errors, and you 
 
 ---
 
+<a name="Summary"></a>
+## Summary ##
+By completing this hands-on lab you have learnt how to:
+
+- Create a Windows Azure Mobile Service
+- Use the Windows Azure Mobile Services SDK
+- Learn how to Insert, Update, Read and Delete rows from a Mobile Service
+- Add Push Notifications to your application
+- Lock down your Mobile Service such that only authenticated users can consume it
+
+---
+
 <a name="AppendixA"></a>
 ## Appendix A: Requesting WNS credentials from the Windows Push Notifications & Live Connect Portal ##
 
