@@ -43,16 +43,16 @@ A screenshot from the completed app is below:
 ![Image 1](Images/image-1.png?raw=true)
 
 <a name="create-a-new-mobile-service" />
-### Task 1- Create a new mobile service ###
+### Task 1 - Creating a new mobile service ###
 Follow these steps to create a new mobile service.
 
-1. Log into the [Windows Azure Management Portal](https://manage.windowsazure.com) and navigate to Mobile Services
+1. Log into the [Windows Azure Management Portal](https://manage.windowsazure.com) and navigate to Mobile Services.
 
-1. Click the **+New** button then click **Mobile Service**, **Create**
+1. Click the **+New** button then click **Mobile Service**, **Create**.
 
 	![image-2](Images/image-2.png?raw=true)
 
-1. Expand **Compute | Mobile Service**, then click **Create**
+1. Expand **Compute | Mobile Service**, then click **Create**.
  
 	![Image 3](Images/image-3.png?raw=true)
  
@@ -75,13 +75,13 @@ Follow these steps to create a new mobile service.
 You have now created a new mobile service that can be used by your mobile apps.
 
 <a name="create-a-new-app" />
-### Task 2 - Create a new app ###
+### Task 2 - Creating a new app ###
 Once you have created your mobile service, you can follow an easy quick start in the Management Portal to either create a new Windows Store app or modify an existing app to connect to your mobile service.
 
 
 1. In the Management Portal, click **Mobile Services**, and then click the mobile service that you just created.
 
-1. In the quickstart tab, expand **Create a new Windows Store app**.
+1. In the quickstart tab, make sure that **Windows Store** is selected as the **Platform**, and expand **Create a new Windows Store app**.
 
 	![Image 6](Images/image-6.png?raw=true)
 
@@ -89,20 +89,26 @@ Once you have created your mobile service, you can follow an easy quick start in
 
 	![Image 7](Images/image-7.png?raw=true)
 
-1. If you haven't already done so, download and install [Visual Studio 2012 Express for Windows 8](http://go.microsoft.com/fwlink/?LinkId=257546&clcid=0x409) and the [Mobile Services SDK](http://go.microsoft.com/fwlink/?LinkId=257545&clcid=0x409) on your local computer or virtual machine.
+1. If you haven't already done so, download and install [Visual Studio 2012 Express for Windows 8](http://go.microsoft.com/fwlink/?LinkId=257546&clcid=0x409) on your local computer or virtual machine.
 
-	This downloads the project for the sample _To do list_ application that is connected to your mobile service. Save the compressed project file to your local computer, and make a note of where you save it.
+1. Click **Create TodoItem Table** to create the table in the database.
+
+1. Lastly, make sure that the **C#** language is selected and click **Download**.
+
+	This downloads the project for the sample _Todo list_ application that is connected to your mobile service. Save the compressed project file to your local computer, and make a note of where you save it.
 
 <a name="run-your-app" />
-### Task 3 - Run your app ###
+### Task 3 - Running your app ###
 
-1. Browse to the location where you saved the compressed project files, expand the files on your computer, and open the solution file in Visual Studio 2012 Express for Windows 8.
+1. Browse to the location where you saved the compressed project files, extract the files on your computer, and open the solution file in Visual Studio 2012 Express for Windows 8.
 
 	![Image 23](Images/image-23.png?raw=true)
 
-1. Press the **F5** key to rebuild the project and start the app.
+1. Expand the **References* node in tthe project and notice that many references are missing. These references will be downloaded as nuget packages when the app is compiled the first time. The _Windows Azure Mobile SDK_ is now downloaded as a nuget package.
 
-1. In the app, type meaningful text, such as _Complete the demo_, in the **Insert a TodoItem** textbox, and then click **Save**.
+1. Press the **F5** key to rebuild the project, download the required dependencies, and start the app.
+
+1. In the app, type meaningful text, such as _Complete the lab_, in the **Insert a TodoItem** textbox, and then click **Save**.
 
 	![Image 9](Images/image-9.png?raw=true)
 
@@ -119,15 +125,13 @@ Once you have created your mobile service, you can follow an easy quick start in
 	![Image 11](Images/image-11.png?raw=true)
 
 <a name="Explore-your-app-code" />
-### Task 4 - Explore your app code ###
+### Task 4 - Exploring your app code ###
 
-In this step we explore _To do list_ application code and see how simple the Windows Azure Mobile Services Client SDK makes it to interact with Windows Azure Mobile Services.
+In this step we explore _Todo list_ application code and see how simple the Windows Azure Mobile Services Client SDK makes it to interact with Windows Azure Mobile Services.
 
-1. Return to the downloaded _To do list_ application in Visual Studio 2012.
+1. Return to the downloaded _Todo list_ application in Visual Studio 2012.
 
-1. In solution explorer **expand the references folder** and show the Windows Azure Mobile Services Client SDK reference.  
-
-	> **Note:** You may also add references to the Windows Azure Mobile Services Client SDK from any Windows Store app. Using the Add reference dialog
+1. In solution explorer **expand the references folder** and show the Windows Azure Mobile Services Client SDK reference. 
 
 1. Open App.xaml.cs and show the MobileServiceClient class.  This is the key class provided by the Mobile Services client SDK that provides a way for your application to interact with Windows Azure Mobile Services. The first parameter in the constructor is the Mobile Service endpoint and the second parameter is the Application Key for your Mobile Service.
 
@@ -141,54 +145,57 @@ In this step we explore _To do list_ application code and see how simple the Win
 
 1. Open **MainPage.xaml.cs** to observe how the mobile service client is then used for Inserts, Updates, Reads and Deletes:
 
-	- The source creates a handle for operations on a table
+	The source creates a handle for operations on a table:
 
-		````C#
-		private IMobileServiceTable<TodoItem> todoTable = App.MobileService.GetTable<TodoItem>();
-		
-		````
-	- Performs an Insert
-		<!-- mark:3;-->
-		````C#
-		private async void InsertTodoItem(TodoItem todoItem)
-		{
-			await todoTable.InsertAsync(todoItem);
-			items.Add(todoItem);                        
-		}
+	````C#
+	private IMobileServiceTable<TodoItem> todoTable = App.MobileService.GetTable<TodoItem>();		
+	````
+	Performs an Insert:
 
-		````
-	- Performs an Update
-		<!-- mark:3 -->
-		````C#
-		private async void UpdateCheckedTodoItem(TodoItem item)
-		{
-			await todoTable.UpdateAsync(item);
-			items.Remove(item);
-		}
-		````
-	- Performs a Read
-		<!-- mark:3-4 -->
-		````C#
-		private void RefreshTodoItems()
-		{
-			items = todoTable
-				 .Where(todoItem => todoItem.Complete == false)
-				 .ToCollectionView();
-			ListItems.ItemsSource = items;
-		}
-		````
+	<!-- mark:3;-->
+	````C#
+	private async void InsertTodoItem(TodoItem todoItem)
+	{
+		await todoTable.InsertAsync(todoItem);
+		items.Add(todoItem);                        
+	}
+	````
 
-1. As an extension see if you can update the _UpdateCheckedTodoItem_ method to perform a delete rather then update operation using the todoTable.DeleteAsync(...) method
+	Performs an Update:
+
+	<!-- mark:3 -->
+	````C#
+	private async void UpdateCheckedTodoItem(TodoItem item)
+	{
+		await todoTable.UpdateAsync(item);
+		items.Remove(item);
+	}
+	````
+
+	Performs a Read:
+
+	<!-- mark:3-4 -->
+	````C#
+	private void RefreshTodoItems()
+	{
+		items = todoTable
+			 .Where(todoItem => todoItem.Complete == false)
+			 .ToCollectionView();
+		ListItems.ItemsSource = items;
+	}
+	````
+
+1. As an extension see if you can update the _UpdateCheckedTodoItem_ method to perform a delete rather then update operation using the todoTable.DeleteAsync(...) method.
 
 <a name="Exercise2" />
 ## Exercise 2: Adding Push Notifications to your app ##
 
-In demo, you add push notifications, using the Windows Push Notification service (WNS), to the quickstart project. When complete, an insert in the mobile service todolist table will generate a push notification back to your app. 
+In this exercise, you will add push notifications, using the Windows Push Notification service (WNS), to the project. When completed, an insert in the mobile service todolist table will generate a push notification back to your app. 
 
-<a name="Register-your-app-for-push-notifications-and-configure-Mobile-Services" />
-### Task 1 - Register your app for push notifications and configure Mobile Services ###
+<a name="Registering-your-app-for-push-notifications-and-configure-Mobile-Services" />
+### Task 1 - Registering your app for push notifications and configure Mobile Services ###
 
-1.	Click **Store** in the Visual Studio menu and select **Reserve App Name**.
+1.	Click **Store** in the Visual Studio menu and select **Reserve App Name**. Additionally, you can find the **Reserve App Name** option under the **Project | Store** menu in some Visual Studio versions. 
 
 	![Reserving App Name](./Images/reserving-app-name.png?raw=true)
 
@@ -236,7 +243,7 @@ In demo, you add push notifications, using the Windows Push Notification service
 
 	> **Note:** In the following steps you will associate your application with the Windows Store. If you obtained your WNS credentials from the Windows Push Notifications & Live Connect Portal, there is no need to execute these steps.
 
-1.	Click **Store** in the Visual Studio menu and select **Associate App with the Store**.
+1.	Click **Store** or **Project | Store** in the Visual Studio menu and select **Associate App with the Store**.
 
 	![Associating App with Store](./Images/associating-app-with-store.png?raw=true)
 
@@ -258,8 +265,8 @@ In demo, you add push notifications, using the Windows Push Notification service
 
 1.	**Close** and **Save** changes to **package.appmanifest**.
 
-<a name="Add-push-notifications-to-the-app" />
-### Task 2 - Add push notifications to the app ###
+<a name="Adding-push-notifications-to-the-app" />
+### Task 2 - Adding push notifications to the app ###
 
 1. In Visual Studio open the **package.appxmanifest**, select the **Application UI** tab and ensure **toast capable** is set to yes.  
 
@@ -277,10 +284,11 @@ In demo, you add push notifications, using the Windows Push Notification service
 	````
 1. Open the file **App.xaml.cs**
 
-1. Add the following using statement:
+1. Add the following using statements:
 
 	````C#
 	using Windows.Networking.PushNotifications;
+	using Windows.Storage;
 	````
 
 1. Find the OnLaunched method and mark it to be **async** as follows
@@ -310,12 +318,12 @@ In demo, you add push notifications, using the Windows Push Notification service
 	}
 	````
 
-Now that we have the client wired up to request a channel and write it to our Mobile Service we now need to add a Channel table to our Mobile Service and add a server side script to send push notifications.
+Now that you have the client wired up to request a channel and write it to the Mobile Service you need to add a Channel table to the Mobile Service and add a server side script to send push notifications.
 
-<a name="Insert-data-to-receive-notifications" />
-### Task 3 - Insert data to receive notifications ###
+<a name="Inserting-data-to-receive-notifications" />
+### Task 3 - Inserting data to receive notifications ###
 
-In this section we add a Channel table and server side scripts to send push notifications everytime someone inserts into our todolist.  
+In this task you will add a Channel table and server side scripts to send push notifications everytime someone inserts into our todolist.  
 
 1. Return to the [Windows Azure Management Portal](https://manage.windowsazure.com/), click **Mobile Services**, and then click your app.
 
@@ -380,21 +388,35 @@ This is the minimum requirement for a table in Mobile Services.
 
 	![Image 22](Images/image-22.png?raw=true)
 
+1. In **Visual Studio** press **F5** to run the app.
+
+1. Enter a _Todo item_ and click **Save**. The toast notification will be displayed.
+
+	![Testing Push notifications](Images/testing-push-notifications.png?raw=true)
+
+
 Next we will move on to look at how you can secure your Mobile Service endpoints
 
 <a name="Exercise3" />
 ## Exercise 3: Adding Auth to Your App and Services ##
 
-This demo shows you how to authenticate users in Windows Azure Mobile Services from a Windows 8 app. In this demo, you add authentication to the quickstart project using Microsoft Account. When successfully authenticated by a Microsoft Account your app will be able to consume your Mobile Service.
+This exercise shows how to authenticate users in Windows Azure Mobile Services from a Windows 8 app. In this exercise, you add authentication to the quickstart project using Microsoft Account. When successfully authenticated by a Microsoft Account your app will be able to consume your Mobile Service.
 
-<a name="Register-your-app" />
-### Task 1 - Register your app ###
+<a name="Registering-your-app" />
+### Task 1 - Registering your app ###
 
-To be able to authenticate users, you must register your Windows 8 app at the Live Connect Developer Center. You must then register the client secret to integrate Live Connect with Mobile Services.
+To be able to authenticate users, you must register your Windows Store app within an Identity Provider. Then you must then register the obtained client secret to integrate the provider with Mobile Services.
 
-1. Navigate to the [Windows Push Notifications & Live Connect](http://go.microsoft.com/fwlink/?LinkID=257677&clcid=0x409) page, log on with your Microsoft account if needed.
+The supported identity providers are listed below. In this exercise you will use **Microsoft Account** as the provider, nevertheless you can use the one of your preferences and you can follow the steps to register your app with that provider:
 
-1. To enable auth you must now Navigate to the [My Apps dashboard](http://go.microsoft.com/fwlink/?LinkId=262039&clcid=0x409) in Live Connect Developer Center and click on your app in the **My applications** list.
+- [Microsoft Account] (http://www.windowsazure.com/en-us/develop/mobile/how-to-guides/register-for-microsoft-authentication/)
+- [Facebook login] (http://www.windowsazure.com/en-us/develop/mobile/how-to-guides/register-for-facebook-authentication/)
+- [Twitter login] (http://www.windowsazure.com/en-us/develop/mobile/how-to-guides/register-for-twitter-authentication/)
+- [Google login] (http://www.windowsazure.com/en-us/develop/mobile/how-to-guides/register-for-google-authentication/)
+
+1. Navigate to the [My Applications](http://go.microsoft.com/fwlink/p/?linkid=262039&clcid=0x409) page in the Live Connect Developer Center, log on with your Microsoft account if needed.
+
+1. Click your app name in the **My applications** list.
 
 	![Image 24](Images/image-24.png?raw=true)
 
@@ -417,7 +439,7 @@ To be able to authenticate users, you must register your Windows 8 app at the Li
 	![Image 27](Images/image-27.png?raw=true)
 
 <a name="Restrict-permissions" />
-### Task 2 - Restrict permissions ###
+### Task 2 - Restricting permissions ###
 
 1. In the Management Portal, click the **Data** tab, and then click the **TodoItem** table.
 
@@ -427,13 +449,13 @@ To be able to authenticate users, you must register your Windows 8 app at the Li
 
 	![Image 29](Images/image-29.png?raw=true)
 
-1. Return to Visual Studio 2012 aand press the **F5** key to run this quickstart-based app; verify that an exception with a status code of 401 (Unauthorized) is raised.
+1. Return to Visual Studio 2012 and press the **F5** key to run this app; verify that an exception with a status code of 401 (Unauthorized) is raised.
 This happens because the app is accessing Mobile Services as an unauthenticated user, but the _TodoItem_ table now requires authentication.
 
 Next, you will update the app to authenticate users with your Microsoft Account before requesting resources from the mobile service.
 
 <a name="Add-authentication" />
-### Task 3 - Add authentication to your Windows store app ###
+### Task 3 - Adding authentication to your Windows store app ###
 
 1. In the project in Visual Studio open **MainPage.xaml.cs**
 
@@ -447,29 +469,29 @@ Next, you will update the app to authenticate users with your Microsoft Account 
 	}
 	````
 
-1. Press the F5 key to run the app and sign into Live Connect with your Microsoft Account.
+1. Press the **F5** key to run the app and sign into Live Connect with your Microsoft Account.
 
 When you are successfully logged-in, the app will run without auth errors, and you will be able to query Mobile Services and make updates to data.
 
 <a name="Exercise4" />
 ## Exercise 4: Adding a Scheduled Job to your Mobile Service ##
 
-In this demo you learn how to execute script on a scheduled basis using **Windows Azure Mobile Services**.  In this scenario we will configure the scheduler to poll Twitter every 15 minutes and then send a Tile update with the latest tweets.
+In this exercise you will learn how to execute a script on a scheduled basis using **Windows Azure Mobile Services**.  In this scenario we will configure the scheduler to poll Twitter every 15 minutes and then send a Tile update with the latest tweets.
 
-
-### Task 1 - Configure your Windows store app for Wide Tiles ###
+<a name="Configuring-your-windows-store-app-for-wide-tiles" />
+### Task 1 - Configuring your Windows store app for Wide Tiles ###
 1. In Visual Studio Open your **package.appxmanifest**
 
 1. Select the Application UI tab
 
-1. Provide a Wide Tile Logo of 310x150 pixels.  
+1. Provide a **Wide Tile Logo** of 310x150 pixels. To do this, click **Wide Logo** in the **All Image Assets** and change the logo in the **Wide Logo** section. 
 
 	![Image 37](Images/image-37.png?raw=true)
 
 > **Note:** Note if you do not have an image of these dimensions available you can use Microsoft Paint to quickly create one
 
 
-### Task 2 - Configure the Mobile Services scheduler ###
+### Task 2 - Configuring the Mobile Services scheduler ###
 
 1. Create the scheduler job that will send push notifications to registered clients every 15 minutes with the latest Twitter updates for a particular twitter handle.
 
