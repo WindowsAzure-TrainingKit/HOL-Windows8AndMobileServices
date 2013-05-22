@@ -178,7 +178,7 @@ In this step we explore _To do list_ application code and see how simple the Win
 		}
 		````
 
-1. As an extension see if you can update the _UpdateCheckedTodoItem_ method to perform a delete rather then update operation using the todoTable.DeleteAsync(...) method
+1. As an extension see if you can update the _UpdateCheckedTodoItem_ method to perform a delete rather than an update operation using the todoTable.DeleteAsync(...) method
 
 <a name="Exercise2" />
 ## Exercise 2: Adding Push Notifications to your app ##
