@@ -8,12 +8,12 @@ In this HOL you will learn how you can leverage Visual Studio 2012 and Windows A
 
 <a name="Objectives" />
 ### Objectives ###
-- Create a Windows Azure Mobile Service
-- Use the Windows Azure Mobile Services SDK
-- Learn how to Insert, Update, Read and Delete rows from a Mobile Service
-- Add Push Notifications to your application
-- Lock down your Mobile Service such that only authenticated users can consume it
-- Add a Scheduled Job to poll the Twitter API and send Tile updates
+- Create a Windows Azure Mobile Service.
+- Use the Windows Azure Mobile Services SDK.
+- Learn how to Insert, Update, Read and Delete rows from a Mobile Service.
+- Add Push Notifications to your application.
+- Lock down your Mobile Service such that only authenticated users can consume it.
+- Add a Scheduled Job to poll the Twitter API and send Tile updates.
 
 <a name="technologies" />
 ### Prerequisites ###
@@ -48,7 +48,7 @@ Follow these steps to create a new mobile service.
 
 1. Log into the [Windows Azure Management Portal](https://manage.windowsazure.com) and navigate to Mobile Services.
 
-1. Click the **+New** button then click **Mobile Service**, **Create**.
+1. Click the **+New** button.
 
 	![image-2](Images/image-2.png?raw=true)
 
@@ -64,7 +64,7 @@ Follow these steps to create a new mobile service.
 
 	This displays the **Specify database settings** page.
 
-	> **Note:** As part of this tutorial, you create a new SQL Database instance and server. You can reuse this new database and administer it as you would any other SQL Database instance. If you already have a database in the same region as the new mobile service, you can instead chooseUse existing Databaseand then select that database. The use of a database in a different region is not recommended because of additional bandwidth costs and higher latencies.
+	> **Note:** As part of this exercise, you create a new SQL Database instance and server. You can reuse this new database and administer it as you would do with any other SQL Database instance. If you already have a database in the same region as the new mobile service, you can instead chooseUse existing Databaseand then select that database. The use of a database in a different region is not recommended because of additional bandwidth costs and higher latencies.
 
 1. In **Name**, type the name of the new database, then type **Login name**, which is the administrator login name for the new SQL Database server, type and confirm the password, and click the check button to complete the process.
  
@@ -104,9 +104,9 @@ Once you have created your mobile service, you can follow an easy quick start in
 
 	![Image 23](Images/image-23.png?raw=true)
 
-1. Expand the **References* node in tthe project and notice that many references are missing. These references will be downloaded as nuget packages when the app is compiled the first time. The _Windows Azure Mobile SDK_ is now downloaded as a nuget package.
+1. Expand the **References** node in the project and notice that many references are missing. These references will be downloaded as nuget packages when the app is compiled the first time. The _Windows Azure Mobile SDK_ is now downloaded as a nuget package.
 
-1. Press the **F5** key to rebuild the project, download the required dependencies, and start the app.
+1. Press the **F5** key to build the project, download the required dependencies, and start the app.
 
 1. In the app, type meaningful text, such as _Complete the lab_, in the **Insert a TodoItem** textbox, and then click **Save**.
 
@@ -114,9 +114,9 @@ Once you have created your mobile service, you can follow an easy quick start in
 
 	This sends a POST request to the new mobile service hosted in Windows Azure. Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile service, and the data is displayed in the second column in the app.
 
-	> **Note:** You can review the code that accesses your mobile service to query and insert data, which is found in either the MainPage.xaml.cs file (C#/XAML project) or the default.js (JavaScript/HTML project) file.
+	> **Note:** You can review the code that accesses your mobile service to query and insert data, which is found in the MainPage.xaml.cs file.
 
-1. Back in the Management Portal, click the **Data** tab and then click the **TodoItems** table and observe that the data has been successfully stored
+1. Back in the Management Portal, click the **Data** tab and then click the **TodoItems** table and observe that the data has been successfully stored.
 
 	![Image 10](Images/image-10.png?raw=true)
 
@@ -129,11 +129,11 @@ Once you have created your mobile service, you can follow an easy quick start in
 
 In this step we explore _Todo list_ application code and see how simple the Windows Azure Mobile Services Client SDK makes it to interact with Windows Azure Mobile Services.
 
-1. Return to the downloaded _Todo list_ application in Visual Studio 2012.
+1. Return to the downloaded _Todo list_ application in Visual Studio 2012 Express for Windows 8.
 
-1. In solution explorer **expand the references folder** and show the Windows Azure Mobile Services Client SDK reference. 
+1. In solution explorer expand the **References** folder and notice **Microsoft.WindowsAzure.Mobile**, which is the reference for the _Windows Azure mobile Services Client SDK_. 
 
-1. Open App.xaml.cs and show the MobileServiceClient class.  This is the key class provided by the Mobile Services client SDK that provides a way for your application to interact with Windows Azure Mobile Services. The first parameter in the constructor is the Mobile Service endpoint and the second parameter is the Application Key for your Mobile Service.
+1. Open **App.xaml.cs** and show the _MobileServiceClient_ class.  This is the key class provided by the Mobile Services client SDK that provides a way for your application to interact with Windows Azure Mobile Services. The first parameter in the constructor is the Mobile Service endpoint and the second parameter is the Application Key for your Mobile Service.
 
 	````C#
 	public static MobileServiceClient MobileService 
@@ -161,7 +161,6 @@ In this step we explore _Todo list_ application code and see how simple the Wind
 	}
 	````
 
-1. As an extension see if you can update the _UpdateCheckedTodoItem_ method to perform a delete rather than an update operation using the todoTable.DeleteAsync(...) method
 	Performs an Update:
 
 	<!-- mark:3 -->
@@ -228,7 +227,7 @@ In this exercise, you will add push notifications, using the Windows Push Notifi
 
 	![Setting Identity Name and Publisher](./Images/app-identification.png?raw=true)
 
-1. Finally we obtained a **Package Security Identifier (SID)** and a **Client secret**, which are the WNS Credentials that we need to update the Web configuration of our Notification App Server.
+1. Finally you obtained a **Package Security Identifier (SID)** and a **Client secret**, which are the WNS Credentials that we need to update the Web configuration of our Notification App Server.
 
 	![Package Security Identifier (SID) and Client secret](./Images/sid-client-secret.png?raw=true)
 
@@ -264,12 +263,12 @@ In this exercise, you will add push notifications, using the Windows Push Notifi
 
 	![Associating your app with the Windows Store Summary](./Images/association-summary.png?raw=true)
 
-1.	**Close** and **Save** changes to **package.appmanifest**.
+1.	**Close** and **Save** changes to **package.appxmanifest**.
 
 <a name="Adding-push-notifications-to-the-app" />
 ### Task 2 - Adding push notifications to the app ###
 
-1. In Visual Studio open the **package.appxmanifest**, select the **Application UI** tab and ensure **toast capable** is set to yes.  
+1. In Visual Studio open the **package.appxmanifest**, select the **Application UI** tab and ensure **toast capable** is set to _yes_.  
 
 	> **Note:** If you wish to send Wide Tiles then you must provide a default wide tile in the Wide Logo field.
 
@@ -283,7 +282,7 @@ In this exercise, you will add push notifications, using the Windows Push Notifi
 	}
 
 	````
-1. Open the file **App.xaml.cs**
+1. Open the file **App.xaml.cs**.
 
 1. Add the following using statements:
 
@@ -292,7 +291,7 @@ In this exercise, you will add push notifications, using the Windows Push Notifi
 	using Windows.Storage;
 	````
 
-1. Find the OnLaunched method and mark it to be **async** as follows
+1. Find the OnLaunched method and mark it to be **async** as follows.
 
 	````C#
 	protected async override void OnLaunched(LaunchActivatedEventArgs args)
@@ -328,9 +327,9 @@ In this task you will add a Channel table and server side scripts to send push n
 
 1. Return to the [Windows Azure Management Portal](https://manage.windowsazure.com/), click **Mobile Services**, and then click your app.
 
-1. Select the **Data** tab
+1. Select the **Data** tab.
 
-1. Click **Create** in the bottom toolbar
+1. Click **Create** in the bottom toolbar.
 
 	![Image 19](Images/image-19.png?raw=true)
 
@@ -345,9 +344,9 @@ This is the minimum requirement for a table in Mobile Services.
 
 	> **Note:** When dynamic schema is enabled on your mobile service, new columns are created automatically when JSON objects are sent to the mobile service by an insert or update operation.
 
-1. Now in the left navbar select the **TodoItem** table 
+1. Now in the left navbar select the **TodoItem** table.
 
-1. Click the **Script** tab and select the **Insert** Operation and replace the existing script with the following and walk through the following code
+1. Click the **Script** tab and select the **Insert** Operation and replace the existing script with the following and walk through the following code.
 
 
 	````JavaScript
@@ -385,7 +384,7 @@ This is the minimum requirement for a table in Mobile Services.
     });    
 	}
 	````
-	> **Note:** This script executes as a each time a the insert operation is executed on the Todoitem table.  The sendNotifications method we select all channels from the Channels table and iterate through them sending a push notification to each channel uri.  While we have only demonstrated a single toast template the push.wns.* namespace provides simple to use methods required for sending toast, tile and badge updates. As you can see in this scenario we are sending a ToastText04 template which requires three lines of text.  When you build your applications we would advise that you do not send toast notifications so frequently but rather only at times when there is a critical or important message to deliver the user of your application.
+	> **Note:** This script executes each time an insert operation is executed on the Todoitem table.  The sendNotifications method will select all channels from the Channels table and iterate through them sending a push notification to each channel URI. Although we have only demonstrated a single toast template, the push.wns.* namespace provides simple-to-use methods required for sending toast, tile and badge updates. As you can see in this scenario we are sending a ToastText04 template that requires three lines of text. When you build your applications we would advise that you do not send toast notifications so frequently but rather only at times when there is a critical or important message to deliver to the user of your application.
 
 	![Image 22](Images/image-22.png?raw=true)
 
@@ -396,7 +395,7 @@ This is the minimum requirement for a table in Mobile Services.
 	![Testing Push notifications](Images/testing-push-notifications.png?raw=true)
 
 
-Next we will move on to look at how you can secure your Mobile Service endpoints
+Next we will move on to look at how you can secure your Mobile Service endpoints.
 
 <a name="Exercise3" />
 ## Exercise 3: Adding Auth to Your App and Services ##
@@ -406,7 +405,7 @@ This exercise shows how to authenticate users in Windows Azure Mobile Services f
 <a name="Registering-your-app" />
 ### Task 1 - Registering your app ###
 
-To be able to authenticate users, you must register your Windows Store app within an Identity Provider. Then you must then register the obtained client secret to integrate the provider with Mobile Services.
+To be able to authenticate users, you must register your Windows Store app within an Identity Provider. You must then register the obtained client secret to integrate the provider with Mobile Services.
 
 The supported identity providers are listed below. In this exercise you will use **Microsoft Account** as the provider, nevertheless you can use the one of your preferences and you can follow the steps to register your app with that provider:
 
@@ -421,7 +420,7 @@ The supported identity providers are listed below. In this exercise you will use
 
 	![Image 24](Images/image-24.png?raw=true)
 
-1. Click **Edit settings**, then **API Settings** and make a note of the value of **Client secret**.
+1. Click **Edit settings**, then **API Settings** and make a note of the value of **Client secret**. In **Redirect domain**, enter the domain of your mobile service, in the format **https://[YOUR-SERVICE-NAME].azure-mobile.net/**, where _YOUR-SERVICE-NAME_ is the name of your mobile service, then click **Save**.
 
 	![Image 25](Images/image-25.png?raw=true)
  
@@ -429,11 +428,10 @@ The supported identity providers are listed below. In this exercise you will use
 
 	> **Note:** The client secret is an important security credential. Do not share the client secret with anyone or distribute it with your app.
 
-1. In **Redirect domain**, enter the domain of your mobile service, in the format **https://****service-name****.azure-mobile.net/**, where _service-name_ is the name of your mobile service, then click **Save**.
-
 1. Return to the [Windows Azure Management Portal](https://manage.windowsazure.com/), click **Mobile Services**, and then click your app.
 
 	![Image 26](Images/image-26.png?raw=true)
+
 
 1. Click the **Identity** tab, enter the **Client secret** obtained from Live Connect, and click **Save**.
 
@@ -446,7 +444,7 @@ The supported identity providers are listed below. In this exercise you will use
 
 	![Image 28](Images/image-28.png?raw=true)
 
-1. Click the **Permissions** tab, set all permissions to **Only authenticated users**, and then click **Save**. This will ensure that all operations against the **TodoItem** table require an authenticated user. This also simplifies the scripts in the next tutorial because they will not have to allow for the possibility of anonymous users
+1. Click the **Permissions** tab, set all permissions to **Only authenticated users**, and then click **Save**. This will ensure that all operations against the **TodoItem** table require an authenticated user.
 
 	![Image 29](Images/image-29.png?raw=true)
 
@@ -458,7 +456,7 @@ Next, you will update the app to authenticate users with your Microsoft Account 
 <a name="Add-authentication" />
 ### Task 3 - Adding authentication to your Windows store app ###
 
-1. In the project in Visual Studio open **MainPage.xaml.cs**
+1. In the project in Visual Studio open **MainPage.xaml.cs**.
 
 1. Update the **OnNavigatedTo** event handler to be async and add a call to the **LoginAsync** method:
 	<!-- mark:1,3 -->
@@ -481,20 +479,19 @@ In this exercise you will learn how to execute a script on a scheduled basis usi
 
 <a name="Configuring-your-windows-store-app-for-wide-tiles" />
 ### Task 1 - Configuring your Windows store app for Wide Tiles ###
-1. In Visual Studio Open your **package.appxmanifest**
 
-1. Select the Application UI tab
+1. In Visual Studio open your **package.appxmanifest** and select the **Application UI** tab.
 
 1. Provide a **Wide Tile Logo** of 310x150 pixels. To do this, click **Wide Logo** in the **All Image Assets** and change the logo in the **Wide Logo** section. 
 
 	![Image 37](Images/image-37.png?raw=true)
 
-> **Note:** Note if you do not have an image of these dimensions available you can use Microsoft Paint to quickly create one
+> **Note:** If you do not have an image of these dimensions available you can use Microsoft Paint to quickly create one.
 
 
 ### Task 2 - Configuring the Mobile Services scheduler ###
 
-1. Create the scheduler job that will send push notifications to registered clients every 15 minutes with the latest Twitter updates for a particular twitter handle.
+1. In the **scheduler** tab, click on **Create the scheduler job** link.
 
 	![Image 38](Images/image-38.png?raw=true)
 
@@ -545,12 +542,12 @@ In this exercise you will learn how to execute a script on a scheduled basis usi
 	}
 	````
 
-1. Once you paste the script into the editor, click the **Save** button to store the changes to the script
+1. Once you paste the script into the editor, click the **Save** button to store the changes to the script.
 
 	![Image 41](Images/image-41.png?raw=true)
 
  
-1. In Visual Studio, press **F5** to build and run the application.  This will ensure your channel URI is up to date and will ensure the Default Wide tile is now on your Start screen
+1. In Visual Studio, press **F5** to build and run the application.  This will ensure your channel URI is up to date and will ensure the Default Wide tile is now on your Start screen.
 
 1. Go back to the Windows Azure Management Portal, select the **Scheduler** tab of your mobile service, and then click **Enable** in the command bar to allow the job to run.
 
@@ -560,7 +557,7 @@ In this exercise you will learn how to execute a script on a scheduled basis usi
 
 	![Image 43](Images/image-43.png?raw=true)
 
-1. Return to the start screen and see the latest update on your application tile
+1. Return to the start screen and see the latest update on your application tile.
 
 	![Image 44](Images/image-44.png?raw=true)
 
@@ -569,11 +566,11 @@ In this exercise you will learn how to execute a script on a scheduled basis usi
 ## Summary ##
 By completing this hands-on lab you have learnt how to:
 
-- Create a Windows Azure Mobile Service
-- Use the Windows Azure Mobile Services SDK
-- Learn how to Insert, Update, Read and Delete rows from a Mobile Service
-- Add Push Notifications to your application
-- Lock down your Mobile Service such that only authenticated users can consume it
-- Use the Scheduler to execute scripts at a scheduled interval
+- Create a Windows Azure Mobile Service.
+- Use the Windows Azure Mobile Services SDK.
+- Learn how to Insert, Update, Read and Delete rows from a Mobile Service.
+- Add Push Notifications to your application.
+- Lock down your Mobile Service such that only authenticated users can consume it.
+- Use the Scheduler to execute scripts at a scheduled interval.
 
 ---
