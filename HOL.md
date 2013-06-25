@@ -409,10 +409,13 @@ To be able to authenticate users, you must register your Windows Store app withi
 
 The supported identity providers are listed below. In this exercise you will use **Microsoft Account** as the provider, nevertheless you can use the one of your preferences and you can follow the steps to register your app with that provider:
 
-- [Microsoft Account] (http://www.windowsazure.com/en-us/develop/mobile/how-to-guides/register-for-microsoft-authentication/)
-- [Facebook login] (http://www.windowsazure.com/en-us/develop/mobile/how-to-guides/register-for-facebook-authentication/)
-- [Twitter login] (http://www.windowsazure.com/en-us/develop/mobile/how-to-guides/register-for-twitter-authentication/)
-- [Google login] (http://www.windowsazure.com/en-us/develop/mobile/how-to-guides/register-for-google-authentication/)
+[Microsoft Account] (http://www.windowsazure.com/en-us/develop/mobile/how-to-guides/register-for-microsoft-authentication/)
+
+[Facebook login] (http://www.windowsazure.com/en-us/develop/mobile/how-to-guides/register-for-facebook-authentication/)
+
+[Twitter login] (http://www.windowsazure.com/en-us/develop/mobile/how-to-guides/register-for-twitter-authentication/)
+
+[Google login] (http://www.windowsazure.com/en-us/develop/mobile/how-to-guides/register-for-google-authentication/)
 
 1. Navigate to the [My Applications](http://go.microsoft.com/fwlink/p/?linkid=262039&clcid=0x409) page in the Live Connect Developer Center, log on with your Microsoft account if needed.
 
@@ -470,7 +473,7 @@ Next, you will update the app to authenticate users with your Microsoft Account 
 
 1. Press the **F5** key to run the app and sign into Live Connect with your Microsoft Account.
 
-When you are successfully logged-in, the app will run without auth errors, and you will be able to query Mobile Services and make updates to data.
+	When you are successfully logged-in, the app will run without auth errors, and you will be able to query Mobile Services and make updates to data.
 
 <a name="Exercise4" />
 ## Exercise 4: Adding a Scheduled Job to your Mobile Service ##
@@ -486,7 +489,7 @@ In this exercise you will learn how to execute a script on a scheduled basis usi
 
 	![Image 37](Images/image-37.png?raw=true)
 
-> **Note:** If you do not have an image of these dimensions available you can use Microsoft Paint to quickly create one.
+	> **Note:** If you do not have an image of these dimensions available you can use Microsoft Paint to quickly create one.
 
 
 ### Task 2 - Configuring the Mobile Services scheduler ###
